@@ -18,7 +18,7 @@ namespace
 {
   // ----- constants -----
   /// program version
-  const char* Version = "2018.11b";
+  const char* Version = "2024.11b";
   /// return codes
   enum ReturnCode
   {
