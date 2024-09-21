@@ -6,7 +6,10 @@
 
 #pragma once
 
+#ifdef _WIN32
 #pragma warning (disable: 4530) // missing exception handling
+#endif
+
 #include <string>
 #include <fstream>
 

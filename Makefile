@@ -1,10 +1,10 @@
 # simple Makefile
-MAKEFLAGS += --silent
+#MAKEFLAGS += --silent
 
 # compiler settings
 CXX = g++
-CXXFLAGS  = -O3 -std=c++11 -s
-CXXFLAGS +=-static
+CXXFLAGS  = -O3 -std=c++17 -Wall -Wextra -Werror -pedantic-errors
+#CXXFLAGS +=-static
 #CXXFLAGS += -ffunction-sections -fdata-sections -Wl,--gc-sections
 
 # input/output

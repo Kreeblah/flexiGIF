@@ -27,8 +27,8 @@ LzwEncoder::LzwEncoder(const RawData& data, bool isGif)
 : m_data(data),
   m_dictionary(),
   m_dictSize(0),
-  m_maxCodeLength(isGif ? 12 : 16),
   m_maxDictionary(), // see a few lines below
+  m_maxCodeLength(isGif ? 12 : 16),
   m_isGif(isGif)
 {
   m_maxDictionary = (1 << m_maxCodeLength) - 1;
@@ -533,7 +533,6 @@ LzwEncoder::BitStream LzwEncoder::merge(std::vector<unsigned int> restarts, Opti
 
   // statistics
   std::vector<unsigned int> sizes;
-  unsigned int totalSize = 0;
 
   // verbose mode displays garbage if using predefined block sizes
   bool verbose = optimize.verbose;
@@ -571,7 +570,6 @@ LzwEncoder::BitStream LzwEncoder::merge(std::vector<unsigned int> restarts, Opti
 
     unsigned int current = (unsigned int)block.size();
     sizes.push_back(current);
-    totalSize += current;
 
 #ifdef ALLOW_VERBOSE
     if (verbose)

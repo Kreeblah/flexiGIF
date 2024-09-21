@@ -124,12 +124,12 @@ void LzwDecoder::decompress(unsigned int expectedNumberOfBytes, unsigned char mi
   m_bytes.reserve(expectedNumberOfBytes);
 
   // pass through first token
-  int prevToken = NoPrevious;
-  int token     = getLzwBits(codeSize);
+  unsigned int prevToken = NoPrevious;
+  unsigned int token     = getLzwBits(codeSize);
   while (token == clear)
     token = getLzwBits(codeSize);
 
-  if (token >= (int)lut.size())
+  if (token >= lut.size())
   {
 #ifdef ALLOW_VERBOSE
     std::cerr << "found initial token " << token << " but only " << lut.size() << " dictionary entries" << std::endl;
@@ -161,7 +161,7 @@ void LzwDecoder::decompress(unsigned int expectedNumberOfBytes, unsigned char mi
     // next token
     prevToken = token;
     token = getLzwBits(codeSize);
-    if (token > (int)lut.size())
+    if (token > lut.size())
     {
 #ifdef ALLOW_VERBOSE
       std::cerr << "found token " << token << " (" << (int)codeSize << " bits, "
@@ -238,7 +238,7 @@ void LzwDecoder::decompress(unsigned int expectedNumberOfBytes, unsigned char mi
       uptoLastBlock  = (unsigned int)m_bytes.size();
 
       // copy first token to output
-      if (token > (int)maxColor)
+      if (token > maxColor)
         throw "block starts with an undefined value/color";
       m_bytes.push_back((unsigned char)token);
 
@@ -259,7 +259,7 @@ void LzwDecoder::decompress(unsigned int expectedNumberOfBytes, unsigned char mi
     add.pos      = (unsigned int)m_bytes.size();
 
     // look up token in dictionary
-    if (token >= (int)lut.size())
+    if (token >= lut.size())
     {
       // broken stream ?
       if (token != lut.size())
