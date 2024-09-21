@@ -2,8 +2,8 @@
 #MAKEFLAGS += --silent
 
 # compiler settings
-CXX = g++
-CXXFLAGS  = -O3 -std=c++17 -Wall -Wextra -Werror -pedantic-errors
+CXX = clang++
+CXXFLAGS  = -O3 -std=c++17 -Wall -Wextra -pedantic -pedantic-errors -Werror
 #CXXFLAGS +=-static
 #CXXFLAGS += -ffunction-sections -fdata-sections -Wl,--gc-sections
 
